@@ -4,7 +4,7 @@ exports.up = function(knex) {
   .createTable('projects', proj => {
       proj.increments();
       proj.string('project_name', 128)
-        .unique()
+        // .unique()
         .notNullable()
       proj.text('description')
         .notNullable()

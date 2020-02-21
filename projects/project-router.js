@@ -1,9 +1,9 @@
 const express = require('express')
-const router = express().router
-const Projects = require('./projects/project-model.js');
+const router = express.Router()
+const Projects = require('./project-model.js');
 
 
-router.get('/projects', (req, res) => {
+router.get('/', (req, res) => {
     Projects.find()
     .then(projects => {
         res.json(projects)
@@ -13,7 +13,7 @@ router.get('/projects', (req, res) => {
     })
 })
 
-router.get('/projects/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     Projects.findById()
     .then(projects => {
         if (projects) {
@@ -27,7 +27,7 @@ router.get('/projects/:id', (req, res) => {
     })
 })
 
-router.post('/projects', (req, res) => {
+router.post('/', (req, res) => {
     const projectData = req.body;
   
     Projects.add(projectData)
@@ -39,7 +39,7 @@ router.post('/projects', (req, res) => {
     });
   });
 
-  router.put('projects/:id', (req, res) => {
+  router.put('/:id', (req, res) => {
     const { id } = req.params;
     const updated = req.body;
   
@@ -59,7 +59,7 @@ router.post('/projects', (req, res) => {
     });
   });
   
-  router.delete('projects/:id', (req, res) => {
+  router.delete('/:id', (req, res) => {
     const { id } = req.params;
   
     Projects.remove(id)
